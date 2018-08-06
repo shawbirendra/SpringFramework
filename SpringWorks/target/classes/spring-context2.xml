@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-init-method="ginit" default-destroy-method="gdestroy">
+	<!-- if scope is prototype then bean is not in the controll of spring Container -->
+	<bean id="employee" class="com.training.employee.Employee"
+		scope="singleton" init-method="init" destroy-method="destroy">
+		<!-- autoboxing is taken care by spring -->
+
+
+		<!-- values can be got from external resource -->
+		<property name="empID" value="${employee.empId}" />
+		<property name="empName" value="${employee.empName}" />
+		<property name="empSal" value="${employee.empSal}" />
+	</bean>
+	<!-- <bean id="employee2" class="com.training.employee.Employee" scope="singleton"> 
+		<property name="empID" value="101" /> <property name="empName" value="Birendra" 
+		/> <property name="empSal" value="10000" /> </bean> -->
+	<!-- When initialization happens spring will look if any class haere implements 
+		BeanPostProcessor if so then it will invoke that class methods before and 
+		after -->
+	<bean class="com.training.bpp.EmployeeBPP" />
+
+
+	<!-- Property configuration goes here... -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>employee_info.properties</value>
+		</property>
+	</bean>
+</beans>

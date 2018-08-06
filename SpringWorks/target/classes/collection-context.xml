@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="questionBank"
+		class="com.training.collections.QuestionBank">
+		<property name="question"
+			value="Inheritence is available in..." />
+		<property name="options">
+			<list>
+				<value>Java</value>
+				<value>C++</value>
+				<value>Scala</value>
+				<value>All</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="addressSet" class="com.training.collections.AddressSet">
+		<property name="addresses">
+			<set>
+				<value>Bengaluru</value>
+				<value>Hyderabad</value>
+				<value>Pune</value>
+				<value>Chennai</value>
+				<value>Kolkata</value>
+				<value>Patna</value>
+			</set>
+		</property>
+	</bean>
+
+	<bean id="accountMap" class="com.training.collections.AccountMap">
+		<property name="accountMap">
+			<map>
+				<entry key="Birendra" value="5000"></entry>
+				<entry key="Ankit" value="5000"></entry>
+				<entry key="AllahRakha" value="5000"></entry>
+				<entry key="Ramu" value="5000"></entry>
+				<entry key="Lohith" value="5000"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="myCollection"
+		class="com.training.collections.MyCollection" autowire="byName" />
+
+</beans>
